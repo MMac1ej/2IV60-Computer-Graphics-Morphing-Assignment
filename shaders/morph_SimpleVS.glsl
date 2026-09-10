@@ -19,7 +19,16 @@ varying vec3 color; // variable that keeps the color of a vertex
 // calculate the intersection with the unit cube
 
 vec2 intersect(vec3 p) {
-	return vec2(0,0);
+	float maxComp = max(max(abs(p.x), abs(p.y)), abs(p.z));
+	vec3 q = p / maxComp;
+
+	if (abs(q.x) >= abs(q.y) && abs(q.x) >= abs(q.z)) {
+		return vec2(q.y, q.z);
+	} else if (abs(q.y) >= abs(q.x) && abs(q.y) >= abs(q.z)) {
+		return vec2(q.x, q.z);
+	} else {
+		return vec2(q.x, q.y);
+	}
 } 
 		
 float offset(vec3 p) {	
