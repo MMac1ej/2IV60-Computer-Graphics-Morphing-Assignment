@@ -51,7 +51,7 @@ void main()
 {
 	// TODO: compute ModelViewProjectionMatrix in terms of 
 	// 		 given matrix variables  | 1 point
-	mat4 ModelViewProjectionMatrix;
+	mat4 ModelViewProjectionMatrix = matVP * matGeo;
     		
     
 	vec3 p = vertex.xyz/vertex.w;
@@ -65,6 +65,6 @@ void main()
 	// TODO: compute gl_Position in terms of 
 	// ModelViewProjectionMatrix and p | 1 point		
 	 
-	gl_Position;	
+	gl_Position = ModelViewProjectionMatrix * vec4(p, 1.0);
 	color=abs(p);
 }
