@@ -15,7 +15,7 @@ uniform mat4 matGeo; // GeometryTransform, pipeline item's transform matrix
 uniform float time;	// variable that keeps the time
 varying vec3 color; // variable that keeps the color of a vertex
 
-// TODO: Given a 3d vector p, which represents the vector from the origin
+
 // calculate the intersection with the unit cube
 
 vec2 intersect(vec3 p) {
@@ -42,13 +42,13 @@ float offset(vec3 p) {
 	// TODO: Come up with a way to restrict face transformations
 	// Hint: Think a about how to limit the
 	// vertices, on which morphing is applied | 1 point		
-	float limit;
+	float limit = 1.0;
 				
 	if(restriction<limit) {	
 		// TODO: Come up with a correct bias,
 		// such that the required morphing effect
 		// is present | 3 points	
-		float bias = 1;
+		float bias = limit - restriction;
 		return sin(time/2.0) * (bias);
 	} else  {
 	   return 0.0;
@@ -58,7 +58,7 @@ float offset(vec3 p) {
 		
 void main()
 {
-	// TODO: compute ModelViewProjectionMatrix in terms of 
+	
 	// 		 given matrix variables  | 1 point
 	mat4 ModelViewProjectionMatrix = matVP * matGeo;
     		
@@ -71,7 +71,7 @@ void main()
 	
 	// pass vertex attributes to the fragment shader.
 	
-	// TODO: compute gl_Position in terms of 
+	
 	// ModelViewProjectionMatrix and p | 1 point		
 	 
 	gl_Position = ModelViewProjectionMatrix * vec4(p, 1.0);
