@@ -17,7 +17,6 @@ varying vec3 color; // variable that keeps the color of a vertex
 
 //Computes the intersection of the unit cube with the
 //half-line starting in the origin and incident with the current vertex.
-//
 //Returns 2D coordinates of hit point on the cube face.
 
 vec2 intersect(vec3 p) {
